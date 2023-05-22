@@ -1,0 +1,32 @@
+jobs:
+- job: Job_1
+  displayName: Build Web Calculatpopr
+  pool:
+    name: Default
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  - task: DotNetCoreCLI@2
+    displayName: dotnet restore
+    inputs:
+      command: restore
+      projects: '**/ACME.UI.Web/ACME.UI.Web.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: dotnet build
+    inputs:
+      projects: '**/ACME.UI.Web/ACME.UI.Web.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: dotnet test
+    inputs:
+      command: test
+      projects: '**/ACME.Tests.Unit\ACME.Tests.Unit.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: dotnet publish
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: '**/ACME.UI.Web/ACME.UI.Web.csproj'
+      arguments: -o $(build.artifactstagingdirectory)
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+...
