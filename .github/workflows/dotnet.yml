@@ -22,8 +22,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore $PROJECT_PATH
+      run: dotnet restore "$PROJECT_PATH"
     - name: Build
-      run: dotnet build $PROJECT_PATH --no-restore 
+      run: dotnet build "$PROJECT_PATH" --no-restore 
     - name: Test
       run: dotnet test "./ACME Mono/ACME.sln" --no-build --verbosity normal
