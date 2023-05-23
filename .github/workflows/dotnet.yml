@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "main" ]
 env:
-  PROJECT_PATH: "./ACME Mono/ACME.sln"
+  PROJECT_PATH: "./ACME Mono/ACME.UI.Web/ACME.UI.Web.csproj"
 jobs:
   build:
 
@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: dotnet build $PROJECT_PATH --no-restore 
     - name: Test
-      run: dotnet test $PROJECT_PATH --no-build --verbosity normal
+      run: dotnet test "./ACME Mono/ACME.sln" --no-build --verbosity normal
