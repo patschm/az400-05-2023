@@ -80,8 +80,7 @@
             "dockerRun": {},
             "netCore": {
                 "appProject": "${workspaceFolder}/ACME.UI.Web.csproj",
-                "enableDebugging": true,
-                "configureSsl": false
+                "enableDebugging": true
             }
         },
         {
